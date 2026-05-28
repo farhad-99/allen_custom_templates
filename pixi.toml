@@ -1,0 +1,17 @@
+[project]
+name = "allen-coarse-parcellation"
+version = "0.1.0"
+description = "Remap ABA_v3 fine-grained atlas labels to 12 coarse regions"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
+
+[dependencies]
+python = ">=3.9,<3.13"
+numpy = ">=1.24"
+nibabel = ">=5.0"
+requests = ">=2.28"
+
+[tasks]
+fetch-hierarchy = "python fetch_hierarchy.py"
+build-mapping = { cmd = "python build_mapping.py", depends-on = ["fetch-hierarchy"] }
+remap = { cmd = "python remap_labels.py", depends-on = ["build-mapping"] }
