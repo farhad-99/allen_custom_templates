@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "allen-coarse-parcellation"
+version = "0.1.0"
+description = "Remap ABA_v3 fine-grained atlas labels to 12 coarse regions"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.24",
+    "nibabel>=5.0",
+    "requests>=2.28",
+]
